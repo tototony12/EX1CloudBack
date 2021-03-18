@@ -1,0 +1,23 @@
+{
+  "name": "ex1cloudback",
+  "version": "1.0.0",
+  "description": "Backend EX1 Cloud",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tototony12/EX1CloudBack.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tototony12/EX1CloudBack/issues"
+  },
+  "homepage": "https://github.com/tototony12/EX1CloudBack#readme",
+  "dependencies": {
+    "dotenv": "^6.2.0",
+    "ibm-watson": "^5.7.3"
+  }
+}
