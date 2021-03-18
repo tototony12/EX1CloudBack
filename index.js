@@ -8,9 +8,10 @@ const cors = require('cors');
 const ToneAnalyzerV3 = require('ibm-watson/tone-analyzer/v3');
 const { IamAuthenticator } = require('ibm-watson/auth');
 
-app.use(express.static(__dirname + '/public'))
+//app.use(express.static(__dirname + '/public'))
 app.use(express.json())
 app.use(cors())
+app.set('view engine', 'pug')
 
 //app.get('/', (req, res) => {
 //    res.render('index')
@@ -43,14 +44,18 @@ app.post('/analizar', (req, res) => {
 
     toneAnalyzer.tone(toneParams)
     .then(toneAnalysis => {
-        app.get('/resultado', function (req, res) {
-            res.send(JSON.stringify(toneAnalysis, null, 2))
+        app.get('/resultado', (req,res) => {
+            res.render('resultado', { mensaje: (JSON.stringify(toneAnalysis, null, 2)) })
         })
+        
         console.log(JSON.stringify(toneAnalysis, null, 2));
     })
     .catch(err => {
-        app.get('/resultado', function (req, res) {
+        /*app.get('/resultado', function (req, res) {
             res.send('error:', err);
+        })*/
+        res.render('resultado', {
+            mensaje: ('error:', err)
         })    
         console.log('error:', err);
     });
