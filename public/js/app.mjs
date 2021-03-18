@@ -23,13 +23,26 @@ textForm.addEventListener('submit', (e) => {
     xhr.send(JSON.stringify(formText))
 })
 
+
+  
+  function sleep(ms) {
+    return new Promise((resolve) => {
+      setTimeout(resolve, ms);
+    });
+  }   
+  
+
+
+
 function redirect() {
 
-    let i = 0; 
-    while (i < 10) { 
-        task(i); 
-    i++; 
-    } 
+    var x = 1;
+    var y = null; // To keep under proper scope
+
+    setTimeout(function() {
+        x = x * 3 + 2;
+        y = x / 2;
+    }, 100);
 
     window.location.replace("/result");
     return false;
