@@ -23,21 +23,10 @@ textForm.addEventListener('submit', (e) => {
     xhr.send(JSON.stringify(formText))
 })
 
-
-  
-  function sleep(ms) {
-    return new Promise((resolve) => {
-      setTimeout(resolve, ms);
-    });
-  }   
-  
-
-
-
 function redirect() {
-
+    // no funciona el delay, recargar pagina manualmente para ver resultado
     var x = 1;
-    var y = null; // To keep under proper scope
+    var y = null;
 
     setTimeout(function() {
         x = x * 3 + 2;

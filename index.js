@@ -6,7 +6,6 @@ const app = express();
 const ToneAnalyzerV3 = require('ibm-watson/tone-analyzer/v3');
 const { IamAuthenticator } = require('ibm-watson/auth');
 
-
 app.use(express.static(__dirname + '/public'))
 app.use(express.json())
 
@@ -14,14 +13,14 @@ app.use(express.json())
 //    res.render('index')
 //})
 
-app.listen(3003, (err) => {
+app.listen(8080, (err) => {
     if (err) {
       throw err
     }
     console.log('Servidor iniciado en el puerto 3000')
   })
 
-app.post('/', (req, res) => {
+app.post('/analizar', (req, res) => {
     console.log(req.body)
 
     const toneAnalyzer = new ToneAnalyzerV3({
@@ -41,12 +40,15 @@ app.post('/', (req, res) => {
 
     toneAnalyzer.tone(toneParams)
     .then(toneAnalysis => {
-        app.get('/result', function (req, res) {
+        app.get('/resultado', function (req, res) {
             res.send(JSON.stringify(toneAnalysis, null, 2))
-          })        
+        })
         console.log(JSON.stringify(toneAnalysis, null, 2));
     })
     .catch(err => {
+        app.get('/resultado', function (req, res) {
+            res.send('error:', err);
+        })    
         console.log('error:', err);
     });
 
