@@ -2,12 +2,15 @@ require('dotenv').config();
 
 
 const express = require('express');
-const app = express();
+const app = express();    
+const cors = require('cors');
+
 const ToneAnalyzerV3 = require('ibm-watson/tone-analyzer/v3');
 const { IamAuthenticator } = require('ibm-watson/auth');
 
 app.use(express.static(__dirname + '/public'))
 app.use(express.json())
+app.use(cors())
 
 //app.get('/', (req, res) => {
 //    res.render('index')
@@ -19,19 +22,6 @@ app.listen(8080, (err) => {
     }
     console.log('Servidor iniciado en el puerto 3000')
   })
-
-app.use((req, res, next) => {
-    const allowedOrigins = ['http://187.177.181.167:8080', 'http://187.177.181.167:3003', 'http://127.0.0.1:8080', 'http://localhost:3003'];
-    const origin = req.headers.origin;
-    if (allowedOrigins.includes(origin)) {
-         res.setHeader('Access-Control-Allow-Origin', origin);
-    }
-    //res.header('Access-Control-Allow-Origin', 'http://127.0.0.1:8020');
-    res.header('Access-Control-Allow-Methods', 'GET, OPTIONS');
-    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    res.header('Access-Control-Allow-Credentials', true);
-    return next();
-});
 
 app.post('/analizar', (req, res) => {
     console.log(req.body)
