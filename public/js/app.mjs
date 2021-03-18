@@ -33,6 +33,6 @@ function redirect() {
         y = x / 2;
     }, 100);
 
-    window.location.replace("/result");
+    window.location.replace("/resultado");
     return false;
   }
