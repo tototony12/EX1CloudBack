@@ -21,7 +21,7 @@ app.listen(8080, (err) => {
   })
 
 app.use((req, res, next) => {
-    const allowedOrigins = ['http://127.0.0.1:8020', 'http://localhost:8020', 'http://127.0.0.1:9000', 'http://localhost:9000'];
+    const allowedOrigins = ['http://187.177.181.167:8080', 'http://187.177.181.167:3003', 'http://127.0.0.1:8080', 'http://localhost:3003'];
     const origin = req.headers.origin;
     if (allowedOrigins.includes(origin)) {
          res.setHeader('Access-Control-Allow-Origin', origin);
