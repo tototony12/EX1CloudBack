@@ -22,3 +22,15 @@ textForm.addEventListener('submit', (e) => {
     }
     xhr.send(JSON.stringify(formText))
 })
+
+function redirect() {
+
+    var delayInMilliseconds = 5000; //1 second
+
+    setTimeout(function() {
+      //your code to be executed after 1 second
+    }, delayInMilliseconds);
+
+    window.location.replace("/result");
+    return false;
+  }

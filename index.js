@@ -37,17 +37,14 @@ app.post('/', (req, res) => {
 
     toneAnalyzer.tone(toneParams)
     .then(toneAnalysis => {
-        const result = (JSON.stringify(toneAnalysis, null, 2));
+        app.get('/result', function (req, res) {
+            res.send(JSON.stringify(toneAnalysis, null, 2))
+          })        
+        console.log(JSON.stringify(toneAnalysis, null, 2));
     })
     .catch(err => {
-        const result = ('error:', err);
+        console.log('error:', err);
     });
 
 })
-
-app.get('/result', function (req, res) {
-    res.send(result)
-  })
-  
-
 
