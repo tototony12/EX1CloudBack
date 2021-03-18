@@ -10,7 +10,11 @@ const { IamAuthenticator } = require('ibm-watson/auth');
 app.use(express.static(__dirname + '/public'))
 app.use(express.json())
 
-app.listen(3003, (err) => {
+//app.get('/', (req, res) => {
+//    res.render('index')
+//})
+
+app.listen(3000, (err) => {
     if (err) {
       throw err
     }

@@ -25,11 +25,11 @@ textForm.addEventListener('submit', (e) => {
 
 function redirect() {
 
-    var delayInMilliseconds = 5000; //1 second
-
-    setTimeout(function() {
-      //your code to be executed after 1 second
-    }, delayInMilliseconds);
+    let i = 0; 
+    while (i < 10) { 
+        task(i); 
+    i++; 
+    } 
 
     window.location.replace("/result");
     return false;
